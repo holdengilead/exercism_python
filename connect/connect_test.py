@@ -1,14 +1,12 @@
 import unittest
 
-from connect import (
-    ConnectGame,
-)
+from connect import ConnectGame
 
 # Tests adapted from `problem-specifications//canonical-data.json`
 
 
 class ConnectTest(unittest.TestCase):
-    def test_an_empty_board_has_no_winner(self):
+    def test_an_empty_board_has_no_winner(self) -> None:
         game = ConnectGame(
             """. . . . .
                 . . . . .
@@ -19,17 +17,17 @@ class ConnectTest(unittest.TestCase):
         winner = game.get_winner()
         self.assertEqual(winner, "")
 
-    def test_x_can_win_on_a_1x1_board(self):
+    def test_x_can_win_on_a_1x1_board(self) -> None:
         game = ConnectGame("""X""")
         winner = game.get_winner()
         self.assertEqual(winner, "X")
 
-    def test_o_can_win_on_a_1x1_board(self):
+    def test_o_can_win_on_a_1x1_board(self) -> None:
         game = ConnectGame("""O""")
         winner = game.get_winner()
         self.assertEqual(winner, "O")
 
-    def test_only_edges_does_not_make_a_winner(self):
+    def test_only_edges_does_not_make_a_winner(self) -> None:
         game = ConnectGame(
             """O O O X
                 X . . X
@@ -39,7 +37,7 @@ class ConnectTest(unittest.TestCase):
         winner = game.get_winner()
         self.assertEqual(winner, "")
 
-    def test_illegal_diagonal_does_not_make_a_winner(self):
+    def test_illegal_diagonal_does_not_make_a_winner(self) -> None:
         game = ConnectGame(
             """X O . .
                 O X X X
@@ -50,7 +48,7 @@ class ConnectTest(unittest.TestCase):
         winner = game.get_winner()
         self.assertEqual(winner, "")
 
-    def test_nobody_wins_crossing_adjacent_angles(self):
+    def test_nobody_wins_crossing_adjacent_angles(self) -> None:
         game = ConnectGame(
             """X . . .
                 . X O .
@@ -61,7 +59,7 @@ class ConnectTest(unittest.TestCase):
         winner = game.get_winner()
         self.assertEqual(winner, "")
 
-    def test_x_wins_crossing_from_left_to_right(self):
+    def test_x_wins_crossing_from_left_to_right(self) -> None:
         game = ConnectGame(
             """. O . .
                 O X X X
@@ -72,7 +70,7 @@ class ConnectTest(unittest.TestCase):
         winner = game.get_winner()
         self.assertEqual(winner, "X")
 
-    def test_o_wins_crossing_from_top_to_bottom(self):
+    def test_o_wins_crossing_from_top_to_bottom(self) -> None:
         game = ConnectGame(
             """. O . .
                 O X X X
@@ -83,7 +81,7 @@ class ConnectTest(unittest.TestCase):
         winner = game.get_winner()
         self.assertEqual(winner, "O")
 
-    def test_x_wins_using_a_convoluted_path(self):
+    def test_x_wins_using_a_convoluted_path(self) -> None:
         game = ConnectGame(
             """. X X . .
                 X . X . X
@@ -94,7 +92,7 @@ class ConnectTest(unittest.TestCase):
         winner = game.get_winner()
         self.assertEqual(winner, "X")
 
-    def test_x_wins_using_a_spiral_path(self):
+    def test_x_wins_using_a_spiral_path(self) -> None:
         game = ConnectGame(
             """O X X X X X X X X
                 O X O O O O O O O
